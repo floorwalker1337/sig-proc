@@ -1,4 +1,8 @@
 import tkinter as tk
+<<<<<<< HEAD
+=======
+import matplotlib.pyplot as plt
+>>>>>>> master
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
 NavigationToolbar2Tk)
@@ -7,11 +11,15 @@ class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
+<<<<<<< HEAD
         self.pack()
+=======
+>>>>>>> master
         self.CreateWidgets()
     
     def CreateWidgets(self):
         # Create frames
+<<<<<<< HEAD
         self.signalFrame = tk.Frame(width=385, height=800, background="bisque")
         self.signalFrame.pack(side="left")
         self.signalFrame.pack_propagate(0)
@@ -34,3 +42,39 @@ class Application(tk.Frame):
         signalCanvas.draw()
         signalCanvas.get_tk_widget().pack(side=windowSide, fill=tk.BOTH, expand=1)
         return signalCanvas
+=======
+        # BUTTONS
+        self.Buttons = {
+            "OpenButton": tk.Button(self.master,text="Open CSV", 
+                                    command=self.OpenFile),
+            "QuitButton": tk.Button(self.master, text="QUIT", fg="red",
+                                    command=self.master.destroy)
+        }
+        # Button layout
+        n=0
+        for button in self.Buttons:
+            self.Buttons[button].grid(row=n,column=1)
+            n+=1
+
+        # SIGNAL WINDOWS
+        self.CreateSignalCanvas()
+    
+    def CreateSignalCanvas(self):
+        self.signalFigure, [self.timeAx, self.freqAx] = plt.subplots(2,1)
+        self.timeAx.cla()
+        self.freqAx.cla()
+        # Set labels
+        self.timeAx.set_xlabel("Number of Samples")
+        self.freqAx.set_xlabel("Frequency (Hz)")
+
+        # Arrange and show
+        self.signalFigure.tight_layout()
+        self.signalCanvas = FigureCanvasTkAgg(self.signalFigure, self.master)
+        self.signalCanvas.get_tk_widget().grid(row=0,column=0,rowspan=len(self.Buttons))
+
+    def OpenFile(self):
+        pass
+
+    def PlotData(self, data):
+        pass
+>>>>>>> master
