@@ -1,25 +1,17 @@
 import tkinter as tk
-<<<<<<< HEAD
-=======
 import matplotlib.pyplot as plt
->>>>>>> master
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
-NavigationToolbar2Tk)
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,NavigationToolbar2Tk)
 
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-<<<<<<< HEAD
         self.pack()
-=======
->>>>>>> master
         self.CreateWidgets()
     
     def CreateWidgets(self):
         # Create frames
-<<<<<<< HEAD
         self.signalFrame = tk.Frame(width=385, height=800, background="bisque")
         self.signalFrame.pack(side="left")
         self.signalFrame.pack_propagate(0)
@@ -28,21 +20,6 @@ class Application(tk.Frame):
         # SIGNAL WINDOWS
         self.TimeDomain = self.CreateSignalCanvas(self.signalFrame,"top")
         self.FreqDomain = self.CreateSignalCanvas(self.signalFrame,"bottom")
-        # BUTTONS
-
-        # Quit Button
-        self.quit = tk.Button(self.buttonFrame, text="QUIT", fg="red",
-                              command=self.master.destroy)
-        self.quit.pack(side="right")
-    
-    def CreateSignalCanvas(self,frame,windowSide):
-        tFig = Figure(figsize=(2,1), dpi=100)
-        tPlot = tFig.add_subplot(111)
-        signalCanvas = FigureCanvasTkAgg(tFig, master = frame)
-        signalCanvas.draw()
-        signalCanvas.get_tk_widget().pack(side=windowSide, fill=tk.BOTH, expand=1)
-        return signalCanvas
-=======
         # BUTTONS
         self.Buttons = {
             "OpenButton": tk.Button(self.master,text="Open CSV", 
@@ -58,6 +35,19 @@ class Application(tk.Frame):
 
         # SIGNAL WINDOWS
         self.CreateSignalCanvas()
+
+        # Quit Button
+        self.quit = tk.Button(self.buttonFrame, text="QUIT", fg="red",
+                              command=self.master.destroy)
+        self.quit.pack(side="right")
+    
+    def CreateSignalCanvas(self,frame,windowSide):
+        tFig = Figure(figsize=(2,1), dpi=100)
+        tPlot = tFig.add_subplot(111)
+        signalCanvas = FigureCanvasTkAgg(tFig, master = frame)
+        signalCanvas.draw()
+        signalCanvas.get_tk_widget().pack(side=windowSide, fill=tk.BOTH, expand=1)
+        return signalCanvas
     
     def CreateSignalCanvas(self):
         self.signalFigure, [self.timeAx, self.freqAx] = plt.subplots(2,1)
@@ -77,4 +67,3 @@ class Application(tk.Frame):
 
     def PlotData(self, data):
         pass
->>>>>>> master
