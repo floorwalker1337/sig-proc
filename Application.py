@@ -69,3 +69,6 @@ class Application(tk.Tk):
 
     def PlotData(self, data):
         pass
+
+    def Filter(self):
+        pass
