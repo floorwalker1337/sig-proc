@@ -26,9 +26,9 @@ class Application(tk.Tk):
     def CreateWidgets(self):
         # Create frames
         self.signalFrame=tk.Frame(width=385, height=800, background="bisque")
-        self.signalFrame.grid(column=0,columnspan=3)
+        self.signalFrame.grid(column=0,columnspan=3,row=0,rowspan=5)
         self.buttonFrame=tk.Frame(background="black")
-        self.buttonFrame.grid(column=4)
+        self.buttonFrame.grid(column=4,row=0,rowspan=5)
         # BUTTONS
         self.Buttons = {
             "OpenButton": tk.Button(self.buttonFrame,text="Open CSV", 
@@ -62,6 +62,7 @@ class Application(tk.Tk):
 
     def OnQuit(self):
         self.destroy()
+        exit()
     
     def OpenFile(self):
         pass
