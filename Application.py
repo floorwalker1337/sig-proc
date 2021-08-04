@@ -67,8 +67,19 @@ class Application(tk.Tk):
     def OpenFile(self):
         pass
 
-    def PlotData(self, data):
+    def PlotData(self,data):
         pass
 
-    def Filter(self):
+class LowPassFilter():
+    def __init__(self,filterType):
+        self.allowedFilterTypes=["IDEAL"]
+        if filterType in self.allowedFilterTypes:
+            self.filterType=filterType
+        else:
+            print("Invalid Low Pass Filter type: " + filterType)
+    
+    def FilterData(self,inputData):
+        pass
+
+    def IdealFilterData(self,inputData):
         pass
